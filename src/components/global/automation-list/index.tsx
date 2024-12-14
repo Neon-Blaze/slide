@@ -5,13 +5,20 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import GradientButton from "../gradient-button";
 import { Button } from "@/components/ui/button";
+import { useQueryAutomations } from "@/hooks/user-queries";
 
 const AutomationList = () => {
-  //WIP: get the automation data
+  const { data } = useQueryAutomations();
 
   const { pathname } = usePaths();
 
-  //WIP: If no automation, show no automation
+  if (data?.status !== 200) {
+    return (
+      <div className="h-[70vh] flex justify-center items-center flex-col gap-y-3">
+        asd
+      </div>
+    );
+  }
   return (
     <div className="flex flex-col gap-y-3">
       <Link
